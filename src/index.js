@@ -1,3 +1,5 @@
+// figure out scrolling down w animation https://stackoverflow.com/questions/21474678/scrolltop-animation-without-jquery
+
 import React from 'react'
 import ReactDOM from 'react-dom'
 import registerServiceWorker from './registerServiceWorker'
@@ -7,7 +9,7 @@ const obj1 = {
   number: 1,
   text: 'Listings arriving in Berlin soon. Scroll down to learn more',
   name: 'Berlin',
-  picURL: 'imgs/mural1.jpg'
+  picURL: 'imgs/berlin.jpg'
 
 }
 
@@ -15,7 +17,7 @@ const obj2 = {
   number: 2,
   text: 'Listings arriving in Tokyo soon. Scroll down to learn more',
   name: 'Tokyo',
-  picURL: 'imgs/gallery1.jpg'
+  picURL: 'imgs/losang.jpg'
 
 }
 
@@ -31,7 +33,7 @@ const obj4 = {
   number: 4,
   text: 'Listings arriving in London soon. Scroll down to learn more',
   name: 'London',
-  picURL: 'imgs/mural1.jpg'
+  picURL: 'imgs/berlin.jpg'
 
 }
 
@@ -39,7 +41,7 @@ const obj5 = {
   number: 5,
   text: 'Listings arriving in NYC soon. Scroll down to learn more',
   name: 'NYC',
-  picURL: 'imgs/gallery1.jpg'
+  picURL: 'imgs/losang.jpg'
 }
 
 const obj6 = {
@@ -53,7 +55,7 @@ const obj7 = {
   number: 7,
   text: 'Listings arriving in Los Angeles soon. Scroll down to learn more',
   name: 'Los Angeles',
-  picURL: 'imgs/mural1.jpg'
+  picURL: 'imgs/berlin.jpg'
 }
 
 const Cities = ({currentObj, cityArray, changeCity}) => (
@@ -79,20 +81,30 @@ const City = ({currentObj, cityArray, myIndex, changeCity}) => {
 }
 
 const LandingImage = ({currentObj}) => {
+  const divStyle = {
+    backgroundImage: 'url(' + currentObj.picURL + ')'
+  }
   return (
-    <div className='landing'>
-      <img src={currentObj.picURL} alt='homepage image' />
-      <button className='learnmore'>Learn More</button>
+    <div className='landing' style={divStyle}>
+      <div className='learnmore' onClick={e => window.scrollBy(0, 300)}><p>Learn More</p></div>
     </div>
   )
 }
 
-const ContainerOne = () => {
+const ContainerOne = ({currentObj, cityArray, changeCity}) => {
   return (
     <div className='container'>
-      <LandingImage currentObj={this.state.currentObj} />
+      <LandingImage currentObj={currentObj} />
 
-      <Cities currentObj={this.state.currentObj} cityArray={this.state.cityArray} changeCity={this.changeCity} />
+      <Cities currentObj={currentObj} cityArray={cityArray} changeCity={changeCity} />
+    </div>
+  )
+}
+
+const ContainerTwo = () => {
+  return (
+    <div id='containertwo'>
+      <p>Page 2</p>
     </div>
   )
 }
@@ -118,12 +130,10 @@ class Homepage extends React.Component {
 
   render () {
     return (
-      <div className='container'>
-        <LandingImage currentObj={this.state.currentObj} />
-
-        <Cities currentObj={this.state.currentObj} cityArray={this.state.cityArray} changeCity={this.changeCity} />
+      <div>
+        <ContainerOne currentObj={this.state.currentObj} cityArray={this.state.cityArray} changeCity={this.changeCity} />
+        <ContainerTwo />
       </div>
-
     )
   }
 }

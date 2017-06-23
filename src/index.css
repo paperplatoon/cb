@@ -1,23 +1,38 @@
 
-
-
+/* LEARN HOW TO HIDE BORDER OVERFLOW .city:nth-child(7) */
 
 *, *:before, *:after {
   box-sizing: border-box;
   padding: 0;
   margin: 0;
 }
+a {
+  color: white;
+}
+
+html {
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
 
 .container {
   display: flex;
 }
 
-.landing {
-  max-width: 87%;
+#containertwo {
+  background-color: blue;
+  width: 100vw;
   height: 100vh;
+}
+
+.landing {
+  min-width: 100%;
+  min-height: 100vh;
   box-sizing: border-box;
-  overflow: hidden;
   transition-duration: 0.7s;
+  background-size: cover;
   
 }
 
@@ -25,25 +40,45 @@
 	position: absolute;
 	top: 84%;
 	left: 5%;
-	width: 20%;
-	height: 10%;
 	background-color: #1c1c1c;
-	color: white;
 	border: none;
-	font-size: 1.75em;
+  font-size: 1.3em;
 	font-family: 'Inconsolata', monospace;
+  text-align: center;
+  padding: 1%;
+  color: white;
 }
+
+@media (max-width: 860px) {
+  .learnmore, .city {
+    font-size: 0.75em;
+  }
+
+  .cities {
+    min-width: 25%;
+    position: fixed;
+    right: 0;
+    top: 0;
+  }
+}
+
 
 .learnmore:hover {
   background-color: #fbffe2;
-  color: black;
   cursor: pointer;
   transition-property: background-color, text-align;
   transition-duration: 0.7s;
+  color: black;
 }
 
+
+
 .cities {
-  background-color: #1c1c1c;
+  background-color: black;
+  position: fixed;
+  opacity: 0.8;
+  top: 0;
+  right: 0;
   width: 13%;
   height: 100vh;
   box-sizing: border-box;
@@ -54,19 +89,16 @@
 .city {
   border: 1px solid #fbffe2;
   text-align: right;
-  height: 14.5%;
+  height: 14.3%;
   padding: 10% 6% 3% 3%;
   cursor: pointer;
   color: white;
   overflow: hidden;
-  
 }
 
 .city:hover {
   background-color: #fbffe2;
   color: black;
-  height: 15%;
-  width: 110%;
   text-align: center;
   transition-property: background-color, text-align;
   transition-duration: 0.7s;
@@ -74,7 +106,6 @@
 .selected-city {
   background-color: #fbffe2;
   color: black;
-  height: 15%;
-  width: 110%;
   text-align: center;
+  overflow: hidden;
 }
