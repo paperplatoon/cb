@@ -1,0 +1,80 @@
+
+
+
+
+*, *:before, *:after {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+.container {
+  display: flex;
+}
+
+.landing {
+  max-width: 87%;
+  height: 100vh;
+  box-sizing: border-box;
+  overflow: hidden;
+  transition-duration: 0.7s;
+  
+}
+
+.learnmore {
+	position: absolute;
+	top: 84%;
+	left: 5%;
+	width: 20%;
+	height: 10%;
+	background-color: #1c1c1c;
+	color: white;
+	border: none;
+	font-size: 1.75em;
+	font-family: 'Inconsolata', monospace;
+}
+
+.learnmore:hover {
+  background-color: #fbffe2;
+  color: black;
+  cursor: pointer;
+  transition-property: background-color, text-align;
+  transition-duration: 0.7s;
+}
+
+.cities {
+  background-color: #1c1c1c;
+  width: 13%;
+  height: 100vh;
+  box-sizing: border-box;
+  font-family: 'Inconsolata', monospace;
+  font-size: 1em;
+}
+
+.city {
+  border: 1px solid #fbffe2;
+  text-align: right;
+  height: 14.5%;
+  padding: 10% 6% 3% 3%;
+  cursor: pointer;
+  color: white;
+  overflow: hidden;
+  
+}
+
+.city:hover {
+  background-color: #fbffe2;
+  color: black;
+  height: 15%;
+  width: 110%;
+  text-align: center;
+  transition-property: background-color, text-align;
+  transition-duration: 0.7s;
+}
+.selected-city {
+  background-color: #fbffe2;
+  color: black;
+  height: 15%;
+  width: 110%;
+  text-align: center;
+}
