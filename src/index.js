@@ -4,6 +4,7 @@ import React from 'react'
 import ReactDOM from 'react-dom'
 import registerServiceWorker from './registerServiceWorker'
 import './index.css'
+require('smoothscroll-polyfill').polyfill()
 
 const obj1 = {
   number: 1,
@@ -80,13 +81,17 @@ const City = ({currentObj, cityArray, myIndex, changeCity}) => {
   }
 }
 
+const pageScroll = (element) => {
+  document.getElementById(element).scrollIntoView({ behavior: 'smooth' })
+}
+
 const LandingImage = ({currentObj}) => {
   const divStyle = {
     backgroundImage: 'url(' + currentObj.picURL + ')'
   }
   return (
     <div className='landing' style={divStyle}>
-      <div className='learnmore' onClick={e => window.scrollBy(0, 300)}><p>Learn More</p></div>
+      <div className='learnmore' onClick={e => pageScroll('blanktwo')}><p>Learn More</p></div>
     </div>
   )
 }
@@ -103,8 +108,10 @@ const ContainerOne = ({currentObj, cityArray, changeCity}) => {
 
 const ContainerTwo = () => {
   return (
-    <div id='containertwo'>
-      <p>Page 2</p>
+    <div>
+      <div id='containertwo' />
+
+      <div id='blanktwo' />
     </div>
   )
 }
@@ -121,7 +128,12 @@ class Homepage extends React.Component {
   }
 
   changeCity (index) {
-    const myCityArray = this.state.cityArray
+    window.scrollTo({
+      top: 0,
+      left: 0,
+      behavior: 'smooth'
+    })
+
     this.setState((prevState) => ({
       ...prevState,
       currentObj: this.state.cityArray[index]

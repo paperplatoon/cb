@@ -67,7 +67,6 @@ html {
   background-color: #fbffe2;
   cursor: pointer;
   transition-property: background-color, text-align;
-  transition-duration: 0.7s;
   color: black;
 }
 
