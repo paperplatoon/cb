@@ -10,31 +10,76 @@ a {
   color: white;
 }
 
-html {
-  -webkit-background-size: cover;
-  -moz-background-size: cover;
-  -o-background-size: cover;
-  background-size: cover;
-}
-
 .container {
   display: flex;
+  flex-direction: row;
+  justify-content: center;
 }
 
-#containertwo {
-  background-color: blue;
-  width: 100vw;
+.containertwo {
   height: 100vh;
+  width: 87vw;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  overflow: hidden;
 }
+
+.centered button {
+  height: 20vh;
+  width: 10vh;
+  font-size: 5em;
+  background-color: white;
+  border: none;
+}
+
+.centered {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
 
 .landing {
   min-width: 100%;
   min-height: 100vh;
   box-sizing: border-box;
   transition-duration: 0.7s;
-  background-size: cover;
-  
+  background-size: cover; 
 }
+
+.left-arrow, .right-arrow {
+  width: 20%;
+  display: inline-block;
+  margin: auto;
+  text-align: center;
+}
+
+.phone-pic {
+  width: 50%;
+  height: 100%;
+  overflow: hidden;
+  background-size: cover;
+  box-sizing: border-box;
+  display: inline-block;
+}
+
+.cities {
+  background-color: black;
+  position: fixed;
+  opacity: 0.8;
+  top: 0;
+  right: 0;
+  width: 13%;
+  height: 100vh;
+  box-sizing: border-box;
+  font-family: 'Inconsolata', monospace;
+  font-size: 1em;
+}
+
+
+
+
 
 .learnmore {
 	position: absolute;
@@ -49,40 +94,11 @@ html {
   color: white;
 }
 
-@media (max-width: 860px) {
-  .learnmore, .city {
-    font-size: 0.75em;
-  }
-
-  .cities {
-    min-width: 25%;
-    position: fixed;
-    right: 0;
-    top: 0;
-  }
-}
-
-
 .learnmore:hover {
   background-color: #fbffe2;
   cursor: pointer;
   transition-property: background-color, text-align;
   color: black;
-}
-
-
-
-.cities {
-  background-color: black;
-  position: fixed;
-  opacity: 0.8;
-  top: 0;
-  right: 0;
-  width: 13%;
-  height: 100vh;
-  box-sizing: border-box;
-  font-family: 'Inconsolata', monospace;
-  font-size: 1em;
 }
 
 .city {
@@ -107,4 +123,18 @@ html {
   color: black;
   text-align: center;
   overflow: hidden;
+}
+
+
+@media (max-width: 860px) {
+  .learnmore, .city {
+    font-size: 0.75em;
+  }
+
+    .cities {
+    min-width: 25%;
+    position: fixed;
+    right: 0;
+    top: 0;
+  }
 }

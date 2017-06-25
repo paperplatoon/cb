@@ -59,6 +59,21 @@ const obj7 = {
   picURL: 'imgs/berlin.jpg'
 }
 
+const pic1 = {
+  number: 1,
+  picURL: 'imgs/vid1.png'
+}
+
+const pic2 = {
+  number: 2,
+  picURL: 'imgs/vid2.png'
+}
+
+const pic3 = {
+  number: 3,
+  picURL: 'imgs/vid3.png'
+}
+
 const Cities = ({currentObj, cityArray, changeCity}) => (
   <div className='cities'>
     {cityArray.map((city, index) =>
@@ -82,7 +97,7 @@ const City = ({currentObj, cityArray, myIndex, changeCity}) => {
 }
 
 const pageScroll = (element) => {
-  document.getElementById(element).scrollIntoView({ behavior: 'smooth' })
+  document.querySelector(element).scrollIntoView({ behavior: 'smooth' })
 }
 
 const LandingImage = ({currentObj}) => {
@@ -91,7 +106,8 @@ const LandingImage = ({currentObj}) => {
   }
   return (
     <div className='landing' style={divStyle}>
-      <div className='learnmore' onClick={e => pageScroll('blanktwo')}><p>Learn More</p></div>
+
+      <div className='learnmore' onClick={e => pageScroll('.left-arrow')}><p>Learn More</p></div>
     </div>
   )
 }
@@ -106,14 +122,56 @@ const ContainerOne = ({currentObj, cityArray, changeCity}) => {
   )
 }
 
-const ContainerTwo = () => {
-  return (
-    <div>
-      <div id='containertwo' />
+class SecondPage extends React.Component {
+  constructor (props) {
+    super(props)
+    this.state = {
+      currentPic: pic1,
+      picArray: [pic1, pic2, pic3]
+    }
 
-      <div id='blanktwo' />
-    </div>
-  )
+    this.leftArrow = this.leftArrow.bind(this)
+    this.rightArrow = this.rightArrow.bind(this)
+  }
+
+  leftArrow () {
+    if (this.state.currentPic.number === 1) {
+      var newPic = this.state.picArray[this.state.picArray.length - 1]
+    } else {
+      var newPic = this.state.picArray[this.state.currentPic.number - 2]
+    }
+
+    this.setState((prevState) => ({
+      ...prevState,
+      currentPic: newPic
+    }))
+  }
+
+  rightArrow () {
+    if (this.state.currentPic.number === this.state.picArray.length) {
+      var newPic = this.state.picArray[0]
+    } else {
+      var newPic = this.state.picArray[this.state.currentPic.number]
+    }
+
+    this.setState((prevState) => ({
+      ...prevState,
+      currentPic: newPic
+    }))
+  }
+
+  render () {
+    const divStyle = {
+      backgroundImage: 'url(' + this.state.currentPic.picURL + ')'
+    }
+    return (
+      <div className='containertwo'>
+        <div className='left-arrow centered' onClick={e => this.leftArrow()}><button>&lt;</button></div>
+        <div className='phone-pic' style={divStyle} />
+        <div className='right-arrow centered' onClick={e => this.rightArrow()}><button>&gt;</button></div>
+      </div>
+    )
+  }
 }
 
 class Homepage extends React.Component {
@@ -144,7 +202,7 @@ class Homepage extends React.Component {
     return (
       <div>
         <ContainerOne currentObj={this.state.currentObj} cityArray={this.state.cityArray} changeCity={this.changeCity} />
-        <ContainerTwo />
+        <SecondPage />
       </div>
     )
   }
