@@ -165,11 +165,9 @@ class SecondPage extends React.Component {
       backgroundImage: 'url(' + this.state.currentPic.picURL + ')'
     }
     return (
-      <div className='containertwo flex-row vh-100'>
+      <div className='containertwo flex-row'>
         <div className='left-arrow flex-row' onClick={e => this.leftArrow()}><button>&lt;</button></div>
-        <div className='phone-container vh-100'>
-          <div className='phone-carousel' style={divStyle} />
-        </div>
+        <div className='phone-container' style={divStyle} onClick={e => this.rightArrow()} />
         <div className='right-arrow flex-row' onClick={e => this.rightArrow()}><button>&gt;</button></div>
       </div>
     )
