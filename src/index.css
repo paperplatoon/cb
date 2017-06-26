@@ -3,29 +3,35 @@
 
 *, *:before, *:after {
   box-sizing: border-box;
-  padding: 0;
-  margin: 0;
 }
 a {
   color: white;
 }
 
-.container {
+.vh-100 {
+  height: 100vh;
+}
+
+.flex-row {
   display: flex;
   flex-direction: row;
+  align-items: center;
+  justify-content: center
+}
+
+.flex {
+  display: flex;
   justify-content: center;
+  align-items: center;
+
 }
 
 .containertwo {
-  height: 100vh;
   width: 87vw;
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
   overflow: hidden;
 }
 
-.centered button {
+.flex-row button {
   height: 20vh;
   width: 10vh;
   font-size: 5em;
@@ -33,17 +39,9 @@ a {
   border: none;
 }
 
-.centered {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
 
 .landing {
   min-width: 100%;
-  min-height: 100vh;
-  box-sizing: border-box;
   transition-duration: 0.7s;
   background-size: cover; 
 }
@@ -51,17 +49,25 @@ a {
 .left-arrow, .right-arrow {
   width: 20%;
   display: inline-block;
-  margin: auto;
   text-align: center;
 }
 
-.phone-pic {
+
+.phone-container {
   width: 50%;
-  height: 100%;
+  height: 100vh;
   overflow: hidden;
-  background-size: cover;
-  box-sizing: border-box;
-  display: inline-block;
+  display: inline-block; 
+  border: 1px solid green;
+}
+
+.phone-carousel {
+  margin: auto;
+  background-size: contain;
+  background-repeat: no-repeat;
+  width: 90%;
+  height: 90%;
+  border: 1px solid red;
 }
 
 .cities {
@@ -71,14 +77,11 @@ a {
   top: 0;
   right: 0;
   width: 13%;
-  height: 100vh;
   box-sizing: border-box;
   font-family: 'Inconsolata', monospace;
   font-size: 1em;
+  border: 3px solid pink;
 }
-
-
-
 
 
 .learnmore {
@@ -96,9 +99,9 @@ a {
 
 .learnmore:hover {
   background-color: #fbffe2;
-  cursor: pointer;
   transition-property: background-color, text-align;
   color: black;
+  cursor: pointer;
 }
 
 .city {
@@ -106,7 +109,6 @@ a {
   text-align: right;
   height: 14.3%;
   padding: 10% 6% 3% 3%;
-  cursor: pointer;
   color: white;
   overflow: hidden;
 }
@@ -115,14 +117,18 @@ a {
   background-color: #fbffe2;
   color: black;
   text-align: center;
-  transition-property: background-color, text-align;
-  transition-duration: 0.7s;
+  transition-property: text, background-color;
+  transition-duration: 1.2s;
 }
 .selected-city {
   background-color: #fbffe2;
   color: black;
   text-align: center;
   overflow: hidden;
+}
+
+.right-arrow:hover, .left-arrow:hover, button, .city {
+  cursor: pointer;
 }
 
 
@@ -132,9 +138,16 @@ a {
   }
 
     .cities {
-    min-width: 25%;
-    position: fixed;
-    right: 0;
-    top: 0;
+    display: none;
+    max-width: 0;
+
+  }
+
+  .containertwo {
+    width: 100%;
+  }
+
+  .phone-container {
+    width: 300px;
   }
 }

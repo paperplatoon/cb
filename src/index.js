@@ -75,7 +75,7 @@ const pic3 = {
 }
 
 const Cities = ({currentObj, cityArray, changeCity}) => (
-  <div className='cities'>
+  <div className='cities vh-100'>
     {cityArray.map((city, index) =>
       <City currentObj={currentObj} key={index} cityArray={cityArray} myIndex={index} changeCity={changeCity} />
   )}
@@ -105,7 +105,7 @@ const LandingImage = ({currentObj}) => {
     backgroundImage: 'url(' + currentObj.picURL + ')'
   }
   return (
-    <div className='landing' style={divStyle}>
+    <div className='landing vh-100' style={divStyle}>
 
       <div className='learnmore' onClick={e => pageScroll('.left-arrow')}><p>Learn More</p></div>
     </div>
@@ -114,7 +114,7 @@ const LandingImage = ({currentObj}) => {
 
 const ContainerOne = ({currentObj, cityArray, changeCity}) => {
   return (
-    <div className='container'>
+    <div className='flex-row'>
       <LandingImage currentObj={currentObj} />
 
       <Cities currentObj={currentObj} cityArray={cityArray} changeCity={changeCity} />
@@ -165,10 +165,12 @@ class SecondPage extends React.Component {
       backgroundImage: 'url(' + this.state.currentPic.picURL + ')'
     }
     return (
-      <div className='containertwo'>
-        <div className='left-arrow centered' onClick={e => this.leftArrow()}><button>&lt;</button></div>
-        <div className='phone-pic' style={divStyle} />
-        <div className='right-arrow centered' onClick={e => this.rightArrow()}><button>&gt;</button></div>
+      <div className='containertwo flex-row vh-100'>
+        <div className='left-arrow flex-row' onClick={e => this.leftArrow()}><button>&lt;</button></div>
+        <div className='phone-container vh-100'>
+          <div className='phone-carousel' style={divStyle} />
+        </div>
+        <div className='right-arrow flex-row' onClick={e => this.rightArrow()}><button>&gt;</button></div>
       </div>
     )
   }
